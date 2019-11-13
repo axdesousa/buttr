@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import { bindActionCreators } from "redux"
 import { connect } from "react-redux"
-import { withRouter } from "react-router-dom"
+import { withRouter, Link } from "react-router-dom"
 
 import { IoIosLock } from "react-icons/io"
 
@@ -14,6 +14,13 @@ class Login extends Component {
     state = {
         email: "",
         password: ""
+    }
+    login() {
+        this.props.login(this.state)
+        this.setState({
+            email: "",
+            password: ""
+        })
     }
     render() {
         return (
@@ -35,48 +42,45 @@ class Login extends Component {
                             </div>
 
                             <div className="form-fields">
-                                <div class="field">
-                                    <label class="label">E-Mail</label>
-                                    <div class="control">
+                                <div className="field">
+                                    <label className="label">E-Mail</label>
+                                    <div className="control">
                                         <input
                                             value={this.state.email}
                                             onChange={e => this.setState({ email: e.target.value })}
-                                            class="input"
+                                            className="input"
                                             type="email"
                                             placeholder="Type your e-mail"
                                         />
                                     </div>
                                 </div>
-                                <div class="field">
-                                    <label class="label">Password</label>
-                                    <div class="control">
+                                <div className="field">
+                                    <label className="label">Password</label>
+                                    <div className="control">
                                         <input
                                             value={this.state.password}
                                             onChange={e =>
                                                 this.setState({ password: e.target.value })
                                             }
-                                            class="input"
+                                            className="input"
                                             type="password"
                                             placeholder="Type your password"
                                         />
                                     </div>
                                 </div>
-                                <div class="field is-grouped">
-                                    <div class="control">
+                                <div className="field is-grouped">
+                                    <div className="control">
                                         <button
-                                            class="button is-link"
-                                            onClick={() => this.props.login(this.state)}
+                                            className="button is-link"
+                                            onClick={() => this.login()}
                                         >
                                             Login
                                         </button>
                                     </div>
-                                    <div class="control">
-                                        <button
-                                            class="button is-link is-light"
-                                            onClick={() => this.props.history.push("/register")}
-                                        >
+                                    <div className="control">
+                                        <Link to="/register" className="button is-link is-light">
                                             Register
-                                        </button>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>

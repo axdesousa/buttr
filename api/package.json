@@ -5,7 +5,7 @@
     "main": "index.js",
     "scripts": {
         "start": "nodemon index.js",
-        "server": "node index.js",
+        "server": "sequelize db:migrate:undo:all && sequelize db:migrate && node index.js",
         "pretest": "NODE_ENV=test sequelize db:migrate:undo:all  ",
         "test": "NODE_ENV=test sequelize db:migrate && jest"
     },

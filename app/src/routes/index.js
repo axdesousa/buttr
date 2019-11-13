@@ -30,9 +30,9 @@ const Routes = () => (
         <div className="app-wrapper">
             <Router history={history}>
                 <Switch>
-                    <PrivateRoute exact path="/" component={Tool} />
                     <Route path="/login" component={Login} />
                     <Route path="/register" component={Register} />
+                    <PrivateRoute path="/" component={Tool} />
                     <Route path="*" component={() => <h1>Page not found</h1>} />
                 </Switch>
             </Router>

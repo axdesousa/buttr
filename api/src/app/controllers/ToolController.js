@@ -2,7 +2,7 @@ const { Tool, Tag, Sequelize } = require("../models")
 const TagController = require("./TagController")
 
 class ToolController {
-    async index(req, res) {
+    async index (req, res) {
         if (typeof req.query.search !== "undefined") {
             if (typeof req.query.is_tag !== "undefined") {
                 const tools = await TagController.search(req)
@@ -33,7 +33,7 @@ class ToolController {
         return res.status(200).send(tools)
     }
 
-    async show(req, res) {
+    async show (req, res) {
         const { id } = req.params
         const tool = await Tool.findByPk(id, {
             include: { association: "tags" }
@@ -41,7 +41,7 @@ class ToolController {
         return res.status(200).send(tool)
     }
 
-    async create(req, res) {
+    async create (req, res) {
         const { tags } = req.body
         const data = await Tool.create(req.body)
 
@@ -61,7 +61,7 @@ class ToolController {
         return res.status(201).send(payload)
     }
 
-    async update(req, res) {
+    async update (req, res) {
         const { id } = req.params
         const { tags } = req.body
         delete req.body.tags
@@ -83,7 +83,7 @@ class ToolController {
         res.status(200).send(item)
     }
 
-    async delete(req, res) {
+    async delete (req, res) {
         const { id } = req.params
         await Tag.destroy({ where: { tool_id: id } })
         const tool = await Tool.findOne({

@@ -19,21 +19,39 @@ export default (state = INITIAL_STATE, action) => {
 export const Creators = {
     login: data => dispatch => {
         dispatch(loadding(true))
-        api.post("/users/session", data).then(response => {
-            const { token } = response.data
-            localStorage.setItem("token", token)
-            dispatch(notification("success", "Login success!"))
-            history.push("/")
-        })
+        api.post("/users/session", data)
+            .then(response => {
+                const { token } = response.data
+                localStorage.setItem("token", token)
+                dispatch(notification("success", "Login success!"))
+                history.push("/")
+            })
+            .catch(err => {
+                const { response } = err
+                dispatch(loadding(false))
+                dispatch(notification("danger", response.data.message))
+            })
     },
 
     logout: () => dispatch => {
-        dispatch(notification("warning", "You have successfully logged out!"))
+        dispatch(notification("warning", "logged success!"))
         localStorage.removeItem("token")
         history.push("/login")
     },
 
-    register: data => async dispatch => {
+    register: data => dispatch => {
         dispatch(loadding(true))
+        api.post("/users", data)
+            .then(response => {
+                const { token } = response.data
+                localStorage.setItem("token", token)
+                dispatch(notification("success", "Success created user!"))
+                history.push("/")
+            })
+            .catch(err => {
+                const { response } = err
+                dispatch(loadding(false))
+                dispatch(notification("danger", response.data.message))
+            })
     }
 }

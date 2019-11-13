@@ -14,11 +14,6 @@ import ConfirmeDelete from "../components/confirmeDelete"
 
 import { Creators as AuthCreators } from "../store/ducks/auth"
 class Tool extends Component {
-    constructor(props) {
-        super(props)
-        const { dispatch } = props
-        console.log("dispatch", dispatch)
-    }
     state = {
         modalTool: false,
         inTag: false,

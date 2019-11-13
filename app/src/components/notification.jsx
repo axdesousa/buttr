@@ -10,8 +10,12 @@ export default props => {
         }
     }, [message.open, dispatch])
     return (
-        <div className="notificacao" style={{ right: message.open === true ? 10 : -400 }}>
-            <article className="message is-success ">
+        <div
+            onClick={() => dispatch(notification("close"))}
+            className="notificacao"
+            style={{ right: message.open === true ? 10 : -400 }}
+        >
+            <article className={`message is-${message.type}`}>
                 <div className="message-body">{message.text}</div>
             </article>
         </div>
