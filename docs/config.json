@@ -1,0 +1,8 @@
+{
+  "title" : "API VUTTR",
+  "version" : "1.0",
+  "host" : "locahost",
+  "bastPath" : "localhost:3000",
+  "schemes" : "http",
+  "description" : "API VUTTR"
+}

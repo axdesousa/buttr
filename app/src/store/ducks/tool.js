@@ -73,7 +73,7 @@ export const Creators = {
                 payload: { data: response.data, search: "", inTag: false }
             })
             dispatch(loadding(false))
-            dispatch(notification("success", "Success created tool"))
+            dispatch(notification("success", "Saved successfully"))
         })
     },
     destroy: id => async dispatch => {
@@ -85,7 +85,7 @@ export const Creators = {
                     payload: { data: response.data, search: "", inTag: false }
                 })
                 dispatch(loadding(false))
-                dispatch(notification("success", "Success created tool"))
+                dispatch(notification("success", "Success deleted tool"))
             })
         })
     }

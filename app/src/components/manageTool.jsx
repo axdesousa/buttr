@@ -54,7 +54,7 @@ export default props => {
                     <span>
                         <IoIosAdd size={25} />
                     </span>
-                    <h3>Add New Tool</h3>
+                    <h3>{tool.id ? "Edit" : "Add"} Tool</h3>
                 </div>
                 <div className="modal-body">
                     <div className="field">
